@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,9 @@ using UnityEngine.UIElements;
 
 public class Fruit_hp : MonoBehaviour
 {
-    public float[] hp;
+    public float hp;
 
-    public GameObject[] f1;
+    public GameObject f1;
 
   
     
@@ -30,13 +31,22 @@ public class Fruit_hp : MonoBehaviour
     
        {
          //  hp[0] -= player.takeDamage;
-         //  if (hp <= 0)
+          if (hp <= 0)
            {
               // f1.SetActive(false);
-             //    Destroy(f1[0]);
+                 Destroy(f1);
            }
           
        }
     }
- 
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            hp -= 5;
+        }
+    }
+
+  
 }

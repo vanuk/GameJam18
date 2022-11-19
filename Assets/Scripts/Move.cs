@@ -14,7 +14,6 @@ public class Move : MonoBehaviour
     public bool isClimb=false;
    // public Rigidbody2D rb;
 
-public int takeDamage=5;
 
     public Transform attackPoint;
     public float attackRange = 0.5f;
@@ -23,7 +22,8 @@ public int takeDamage=5;
 
   
     private bool isFase = true;
-   
+
+    public GameObject fight;
     
     public float jumpingPower = 16f;
     [SerializeField] private Rigidbody2D rb;
@@ -36,7 +36,7 @@ public int takeDamage=5;
     
     public Fruit_hp d2;
     void Start()
-    {
+    {  fight.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
         dialog.SetActive(false);
     }
@@ -49,10 +49,23 @@ public int takeDamage=5;
 
         if (Input.GetKeyDown(KeyCode.F))
         {
+            fight.SetActive(true);
+            StartCoroutine(Wait());
             Attack();
+           // fight.SetActive(false);
+        }
+      //  if (!Input.GetKeyUp(KeyCode.F))
+        {
+            
+          //  Attack();
           
         }
-        
+        IEnumerator Wait()
+        {
+           
+            yield return new WaitForSeconds((float) 0.5);
+            fight.SetActive(false);
+        }
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
@@ -88,11 +101,7 @@ public int takeDamage=5;
         foreach (Collider2D enemy  in hitEnemy )
         {
             
-                d.hp[0] -= 5;
-                if (d.hp[0] <= 0)
-                {
-                    Destroy(d.f1[0]);
-                }
+               
                
 
             Debug.Log("we hit");
@@ -135,10 +144,7 @@ public int takeDamage=5;
         {
             dialog.SetActive(true);
         }
-        if (col.CompareTag("enemy"))
-        {
-            Attack();
-        }
+      
     }
 
     private void OnTriggerExit2D(Collider2D other)
