@@ -10,7 +10,7 @@ public class Move : MonoBehaviour
     public int MoveSpeed=0;
     public int MoveSpeedUp=0;
 
-    public GameObject dialog;
+    public GameObject[] dialog;
 
     public bool isClimb=false;
    // public Rigidbody2D rb;
@@ -30,9 +30,10 @@ public class Move : MonoBehaviour
 
     public GameObject task;
 
-    public GameObject player;
+   // public GameObject player;
 
-    public GameObject fon;
+   // public GameObject fon;
+   // public Camera c;
     public float jumpingPower = 16f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -40,17 +41,14 @@ public class Move : MonoBehaviour
 
     public int num ;
     public Text Text;
-    public Fruit_hp d;
 
-    public Fruit_hp d1;
-    
-    public Fruit_hp d2;
+    public GameObject[] nps;
     void Start()
     {
        // Text = GetComponent<Text>();
         fight.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
-        dialog.SetActive(false);
+        dialog[0].SetActive(false);
         pause.SetActive(false);
         task.SetActive(false);
     }
@@ -83,8 +81,8 @@ public class Move : MonoBehaviour
        
         Flip();
         Text.text = num.ToString();
-        var positionY = fon.transform.position.y * 10;
-        fon.transform.position = player.transform.position;
+      //  var positionY = fon.transform.position.y * 10;
+       // fon.transform.position = c.transform.position;
 
     }
 
@@ -154,16 +152,27 @@ public class Move : MonoBehaviour
 
         if (col.CompareTag("Dialogs"))
         {
-            dialog.SetActive(true);
+            dialog[0].SetActive(true);
             task.SetActive(true);
+            nps[0].SetActive(true);
+            
         }
-      
+        if (col.CompareTag("Dialogs1"))
+        {
+            
+            
+            nps[1].SetActive(true);
+            
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        nps[1].SetActive(false);
         isClimb = false;
-        Destroy(dialog);
+        Destroy(dialog[0]);
+        Destroy(dialog[1]);
+        
         //dialog.SetActive(false);
     }
 }
