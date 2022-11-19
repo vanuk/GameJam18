@@ -43,6 +43,9 @@ public class Move : MonoBehaviour
     public Text Text;
 
     public GameObject[] nps;
+    public GameObject Door;
+    public Animator anim;
+    public Animator anim1;
     void Start()
     {
        // Text = GetComponent<Text>();
@@ -51,6 +54,7 @@ public class Move : MonoBehaviour
         dialog[0].SetActive(false);
         pause.SetActive(false);
         task.SetActive(false);
+        Door.SetActive(false);
     }
 
     // Update is called once per frame
@@ -59,9 +63,11 @@ public class Move : MonoBehaviour
       
         move = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(move, 0, 0) * Time.deltaTime * MoveSpeed;
+       
 
         if (Input.GetKeyDown(KeyCode.F))
         {
+            anim1.SetBool("1",true);
             fight.SetActive(true);
             StartCoroutine(Wait());
             Attack();
@@ -137,7 +143,14 @@ public class Move : MonoBehaviour
             var move1 = Input.GetAxis("Vertical");
             transform.position += new Vector3(0, move1, 0) * Time.deltaTime * MoveSpeedUp;
         }
-     
+        if (move > 0.0f||move < 0.0f)
+        {
+            anim.SetBool("run",true);
+        }
+        if(move==0.0f)
+        {
+            anim.SetBool("run",false);
+        }
          
         
     }
@@ -162,6 +175,12 @@ public class Move : MonoBehaviour
             
             
             nps[1].SetActive(true);
+            
+        }
+        if (col.CompareTag("Respawn"))
+        {
+            
+            Door.SetActive(true);
             
         }
     }

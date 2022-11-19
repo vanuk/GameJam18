@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 351050974047576755}
   - component: {fileID: 351050974047576764}
   - component: {fileID: 7517273149540724795}
+  - component: {fileID: 6011878797342467960}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -172,6 +173,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 0}
+--- !u!114 &6011878797342467960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351050974047576766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91f965a270f15f409bf7fbc4fe5bfe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &351050974327901007
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +197,6 @@ GameObject:
   - component: {fileID: 351050974327900995}
   - component: {fileID: 351050974327901004}
   - component: {fileID: 351050974327901005}
-  - component: {fileID: 2669244083408054615}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -295,30 +307,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2669244083408054615}
-        m_TargetAssemblyTypeName: QuitButton, Assembly-CSharp
-        m_MethodName: QuitGame
-        m_Mode: 1
+      - m_Target: {fileID: 6011878797342467960}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: St
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: test
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2669244083408054615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351050974327901007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46e19352c69c06f42a8f813334869e6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &351050974502942339
 GameObject:
   m_ObjectHideFlags: 0
