@@ -35,7 +35,7 @@ public class Fruit_hp : MonoBehaviour
            {
               // f1.SetActive(false);
                  Destroy(f1);
-                player.num++;
+                      player.num ++ ;
            }
           
        }
