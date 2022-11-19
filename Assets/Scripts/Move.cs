@@ -25,13 +25,20 @@ public class Move : MonoBehaviour
     private bool isFase = true;
 
     public GameObject fight;
-    
+
+    public GameObject pause;
+
+    public GameObject task;
+
+    public GameObject player;
+
+    public GameObject fon;
     public float jumpingPower = 16f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    public int num = 0;
+    public int num ;
     public Text Text;
     public Fruit_hp d;
 
@@ -39,15 +46,19 @@ public class Move : MonoBehaviour
     
     public Fruit_hp d2;
     void Start()
-    {  fight.SetActive(false);
+    {
+       // Text = GetComponent<Text>();
+        fight.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
         dialog.SetActive(false);
-        //Text = T;
+        pause.SetActive(false);
+        task.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+      
         move = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(move, 0, 0) * Time.deltaTime * MoveSpeed;
 
@@ -56,14 +67,8 @@ public class Move : MonoBehaviour
             fight.SetActive(true);
             StartCoroutine(Wait());
             Attack();
-           // fight.SetActive(false);
         }
-      //  if (!Input.GetKeyUp(KeyCode.F))
-        {
-            
-          //  Attack();
-          
-        }
+
         IEnumerator Wait()
         {
            
@@ -77,8 +82,10 @@ public class Move : MonoBehaviour
 
        
         Flip();
+        Text.text = num.ToString();
+        var positionY = fon.transform.position.y * 10;
+        fon.transform.position = player.transform.position;
 
-      
     }
 
     void Flip()
@@ -97,6 +104,11 @@ public class Move : MonoBehaviour
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
+
+    public void Pause()
+    {
+        pause.SetActive(true);
+    }
     void Attack()
     {
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -104,10 +116,6 @@ public class Move : MonoBehaviour
         //takeDamage=5;
         foreach (Collider2D enemy  in hitEnemy )
         {
-            
-               
-               
-
             Debug.Log("we hit");
         }
     
@@ -147,6 +155,7 @@ public class Move : MonoBehaviour
         if (col.CompareTag("Dialogs"))
         {
             dialog.SetActive(true);
+            task.SetActive(true);
         }
       
     }
@@ -154,6 +163,7 @@ public class Move : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         isClimb = false;
-        dialog.SetActive(false);
+        Destroy(dialog);
+        //dialog.SetActive(false);
     }
 }
