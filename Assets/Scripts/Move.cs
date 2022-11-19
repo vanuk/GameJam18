@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.UI;
 
 public class Move : MonoBehaviour
 {
@@ -29,7 +30,9 @@ public class Move : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    
+
+    public int num = 0;
+    public Text Text;
     public Fruit_hp d;
 
     public Fruit_hp d1;
@@ -39,6 +42,7 @@ public class Move : MonoBehaviour
     {  fight.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
         dialog.SetActive(false);
+        //Text = T;
     }
 
     // Update is called once per frame

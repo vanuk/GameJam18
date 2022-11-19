@@ -876,6 +876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 20
   f1: {fileID: 883410394}
+  player: {fileID: 900995335}
 --- !u!95 &883410398
 Animator:
   serializedVersion: 4
@@ -1011,6 +1012,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  num: 0
+  Text: {fileID: 0}
   d: {fileID: 2132788852}
   d1: {fileID: 0}
   d2: {fileID: 0}
@@ -1209,6 +1212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   f1: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1185005652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 20
   f1: {fileID: 1369906945}
+  player: {fileID: 900995335}
 --- !u!95 &1369906949
 Animator:
   serializedVersion: 4
@@ -2544,6 +2549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 20
   f1: {fileID: 1929510358}
+  player: {fileID: 900995335}
 --- !u!95 &1929510362
 Animator:
   serializedVersion: 4
@@ -4035,6 +4041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 20
   f1: {fileID: 2048714570}
+  player: {fileID: 900995335}
 --- !u!95 &2048714574
 Animator:
   serializedVersion: 4
@@ -4270,6 +4277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 20
   f1: {fileID: 2132788847}
+  player: {fileID: 900995335}
 --- !u!61 &2132788853
 BoxCollider2D:
   m_ObjectHideFlags: 0

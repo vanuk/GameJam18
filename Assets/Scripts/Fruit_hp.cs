@@ -9,7 +9,7 @@ public class Fruit_hp : MonoBehaviour
     public float hp;
 
     public GameObject f1;
-
+    public Move player;
   
     
     // Start is called before the first frame update
@@ -35,6 +35,7 @@ public class Fruit_hp : MonoBehaviour
            {
               // f1.SetActive(false);
                  Destroy(f1);
+                player.num++;
            }
           
        }
@@ -45,6 +46,7 @@ public class Fruit_hp : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             hp -= 5;
+          
         }
     }
 
