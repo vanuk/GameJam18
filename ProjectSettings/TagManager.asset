@@ -8,6 +8,7 @@ TagManager:
   - Dialogs
   - enemy
   - Player1
+  - Dialogs1
   layers:
   - Default
   - TransparentFX
