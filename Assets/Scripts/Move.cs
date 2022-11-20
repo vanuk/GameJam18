@@ -55,6 +55,8 @@ public class Move : MonoBehaviour
         pause.SetActive(false);
         task.SetActive(false);
         Door.SetActive(false);
+        nps[2].SetActive(false);
+        nps[3].SetActive(false);
     }
 
     // Update is called once per frame
@@ -170,24 +172,34 @@ public class Move : MonoBehaviour
             nps[0].SetActive(true);
             
         }
+
         if (col.CompareTag("Dialogs1"))
         {
-            
-            
-            nps[1].SetActive(true);
-            
+            if (num == 10)
+            {
+                nps[1].SetActive(true);
+                nps[3].SetActive(true);
+            }
+    }
+        if (col.CompareTag("Dialogs1"))
+        {
+            if (num < 10)
+
+            {
+                nps[2].SetActive(true);
+                nps[3].SetActive(false);
+            }
         }
         if (col.CompareTag("Respawn"))
         {
-            
             Door.SetActive(true);
-            
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         nps[1].SetActive(false);
+        nps[2].SetActive(false);
         isClimb = false;
         Destroy(dialog[0]);
         Destroy(dialog[1]);
